@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class hook : MonoBehaviour {
+    
+    
 
 	// Use this for initialization
 	void Start () {

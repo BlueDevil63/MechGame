@@ -24,7 +24,7 @@ public class InputManager : MonoBehaviour {
         if (Input.GetKey(KeyCode.W))
         {
             player.transform.Translate(0.0f, 0.0f, Time.deltaTime * 4.0f);
-            Debug.Log("w");
+           // Debug.Log("w");
         }
         if (Input.GetKey(KeyCode.A))
         {
@@ -44,6 +44,15 @@ public class InputManager : MonoBehaviour {
         if (Input.GetKey(KeyCode.Space))
         {
             player.transform.Translate(0.0f, Time.deltaTime * 4.0f, 0.0f);
+        }
+        // hook
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+
+        }
+        if( Input.GetKeyDown(KeyCode.Mouse1))
+        {
+
         }
 
 

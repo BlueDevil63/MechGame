@@ -1,15 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour {
-    public static GameManager instance;
-
-
-
-    void Awake()
-    {
-        instance = this;
-    }
+public class EnemyState : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

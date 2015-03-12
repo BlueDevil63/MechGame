@@ -6,8 +6,8 @@ public class SmoothFollowCamera : MonoBehaviour {
    // public float smooth = 1.0f;
     Transform _transform;
     public Transform targetObject;
-    public float Height = 3.0f;
-    public float dist = 5.0f;
+    public float Height = 4.0f;
+    public float dist = 7.0f;
     public float heightDamping = 2.0f;
     public float targtYPos = 2.0f;
     Vector3 lookAtTarget;
