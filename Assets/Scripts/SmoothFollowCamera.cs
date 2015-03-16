@@ -7,7 +7,7 @@ public class SmoothFollowCamera : MonoBehaviour {
     Transform _transform;
     public Transform targetObject;
     public float Height = 4.0f;
-    public float dist = 7.0f;
+    public float dist = 9.0f;
     public float heightDamping = 2.0f;
     public float targtYPos = 2.0f;
     Vector3 lookAtTarget;
@@ -40,6 +40,8 @@ public class SmoothFollowCamera : MonoBehaviour {
         lookAtTarget.y = lookAtTarget.y + targtYPos;
         
         transform.LookAt(lookAtTarget);
+        
+        
     }
 	
 	// Update is called once per frame

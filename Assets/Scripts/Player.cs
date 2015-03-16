@@ -2,22 +2,41 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-    public Player instance;
     public GameObject hook;
+    //-----상태 체크------
+    public bool jumping = false;
+    public bool busterOn = false;
+    public bool isHooking = false;
+    //-------hook관련---
     int hookCount = 2;
-    public float hookDist = 0.0f;
-    
+    float hookDist = 0.0f;
+    int hookPower;
+    float hookVelocity;
+    //------플레이어 관련-----
+    Vector3 pPosition;
+    int weight;
+    float pVelocity;
+    int pPower;
+    float pHp;
+    float pBuster;
+    //--------buster-------
+    int busterPower;
+    float busterVelocity;
+    float coolingRate;
+    //-----기타 개수 체크용-----
+    int inventoryMemory;
+    int optionModule;
+
 	// Use this for initialization
-    void Awake()
+    void Start()
     {
-        instance = this;
+
     }
-	void Start () {
-	
-	}
+
 	
 	// Update is called once per frame
 	void Update () {
+     
 	
 	}
 
@@ -26,10 +45,17 @@ public class Player : MonoBehaviour {
     {
 
     }
+    void Jump()
+    {
+       jumping = true;
+       Debug.Log("juming1");
+    }
+
     //부스터의 사용
     void OnBuster()
     {
-
+        
+        busterOn = false;
     }
     //근잡공격
     void ShortAttack()

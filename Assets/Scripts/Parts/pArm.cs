@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class hook : MonoBehaviour {
-    public Vector3 hookPosition;
-    
-
+public class pArm : MonoBehaviour {
+    public int weight = 100;
 	// Use this for initialization
 	void Start () {
 	
@@ -14,5 +12,4 @@ public class hook : MonoBehaviour {
 	void Update () {
 	
 	}
-
 }
