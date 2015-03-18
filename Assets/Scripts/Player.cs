@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-    public GameObject hook;
+    public Transform hook;
+    public GameObject hookPoint;
     //-----상태 체크------
     public bool jumping = false;
     public bool busterOn = false;
@@ -11,7 +12,7 @@ public class Player : MonoBehaviour {
     int hookCount = 2;
     float hookDist = 0.0f;
     int hookPower;
-    float hookVelocity;
+    float hookVelocity = 300;
     //------플레이어 관련-----
     Vector3 pPosition;
     int weight;
@@ -36,7 +37,11 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-     
+     if(Input.GetKeyDown(KeyCode.F))
+     {
+       // newHook = Instantiate(hook, hookPoint.transform.position, hookPoint.transform.rotation);
+         //newHook
+     }
 	
 	}
 
