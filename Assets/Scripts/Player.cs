@@ -2,17 +2,22 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-    public Transform hook;
-    public GameObject hookPoint;
+ 
+    public float hookRate;
     //-----상태 체크------
     public bool jumping = false;
     public bool busterOn = false;
     public bool isHooking = false;
     //-------hook관련---
+    public GameObject hook;
+    public Transform hookSpawn0;
+    public Transform hookSpawn1;
+    public GameObject hookPoint;
     int hookCount = 2;
     float hookDist = 0.0f;
     int hookPower;
     float hookVelocity = 300;
+   
     //------플레이어 관련-----
     Vector3 pPosition;
     int weight;
@@ -39,8 +44,14 @@ public class Player : MonoBehaviour {
 	void Update () {
      if(Input.GetKeyDown(KeyCode.F))
      {
-       // newHook = Instantiate(hook, hookPoint.transform.position, hookPoint.transform.rotation);
-         //newHook
+         if (hookCount != 0)
+         {
+             if (hookCount < 2)
+             { hookCount++; }
+
+             Instantiate(hook, hookSpawn0.position, hookSpawn1.rotation);
+             hookCount--;
+         }
      }
 	
 	}

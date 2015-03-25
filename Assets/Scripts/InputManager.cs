@@ -36,6 +36,12 @@ public class InputManager : MonoBehaviour {
         {
             player.transform.Translate(Time.deltaTime * moveSpeed, 0.0f, 0.0f);
         }
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            
+        }
+
+
         //부스터(점프)-> 스페이스바
         //부스터 중 방향키 입력으로 이동, 
         //부스터 시간 제한
