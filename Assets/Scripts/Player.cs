@@ -33,6 +33,13 @@ public class Player : MonoBehaviour {
     int inventoryMemory;
     int optionModule;
 
+    Animator _animator;
+
+    void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
 	// Use this for initialization
     void Start()
     {
@@ -57,9 +64,17 @@ public class Player : MonoBehaviour {
 	}
 
     //이동-애니메이션
-    void Movement()
+   public bool Movement(bool isMovig)
     {
 
+        if (isMovig)
+            _animator.SetBool("run", true);
+        else
+       {
+           _animator.SetBool("run", false);
+       }
+       
+       return false;
     }
     void Jump()
     {

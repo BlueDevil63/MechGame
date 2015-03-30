@@ -4,9 +4,11 @@ using System.Collections;
 public class InputManager : MonoBehaviour {
     public GameObject player;
     public float moveSpeed = 20.0f;
+    bool isMoving;
 
 	// Use this for initialization
 	void Start () {
+        isMoving = false;
 	
 	}
 	
@@ -21,20 +23,33 @@ public class InputManager : MonoBehaviour {
         //방향키(십자키 제외)
         if (Input.GetKey(KeyCode.W))
         {
+            isMoving =true;
             player.transform.Translate(0.0f, 0.0f, Time.deltaTime * moveSpeed);
+           isMoving =  player.GetComponent<Player>().Movement(isMoving);
+           isMoving = player.GetComponent<Player>().Movement(isMoving);
            // Debug.Log("w");
         }
         if (Input.GetKey(KeyCode.A))
         {
+            isMoving = true;
             player.transform.Translate(Time.deltaTime * -moveSpeed, 0.0f, 0.0f);
+            isMoving = player.GetComponent<Player>().Movement(isMoving);
+            isMoving = player.GetComponent<Player>().Movement(isMoving);
+
         }
         if (Input.GetKey(KeyCode.S))
         {
+            isMoving = true;
             player.transform.Translate(0.0f, 0.0f, Time.deltaTime * -moveSpeed);
+            isMoving = player.GetComponent<Player>().Movement(isMoving);
+            isMoving = player.GetComponent<Player>().Movement(isMoving);
         }
         if (Input.GetKey(KeyCode.D))
         {
+            isMoving = true;
             player.transform.Translate(Time.deltaTime * moveSpeed, 0.0f, 0.0f);
+            isMoving = player.GetComponent<Player>().Movement(isMoving);
+            isMoving = player.GetComponent<Player>().Movement(isMoving);
         }
         if(Input.GetKeyDown(KeyCode.F))
         {
