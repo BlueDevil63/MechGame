@@ -9,7 +9,8 @@ public class Player : MonoBehaviour {
     public bool busterOn = false;
     public bool isHooking = false;
     //-------hook관련---
-    public GameObject hook;
+    public Transform hook0;
+    public Transform hook1;
     public Transform hookSpawn0;
     public Transform hookSpawn1;
     public GameObject hookPoint;
@@ -35,8 +36,12 @@ public class Player : MonoBehaviour {
 
     Animator _animator;
 
+    public static Player instance;
+
+
     void Awake()
     {
+        instance = this;
         _animator = GetComponent<Animator>();
     }
 
@@ -56,7 +61,8 @@ public class Player : MonoBehaviour {
              if (hookCount < 2)
              { hookCount++; }
 
-             Instantiate(hook, hookSpawn0.position, hookSpawn1.rotation);
+             //Instantiate(hook, hookSpawn0.position, hookSpawn1.rotation);
+            // hook0.Translate(10, 10, 10);
              hookCount--;
          }
      }
@@ -88,7 +94,7 @@ public class Player : MonoBehaviour {
         
         busterOn = false;
     }
-    //근잡공격
+    //근접공격
     void ShortAttack()
     {
 

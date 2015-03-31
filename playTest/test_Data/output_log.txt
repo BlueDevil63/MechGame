@@ -1,4 +1,4 @@
-Initialize engine version: 5.0.0f4 (5b98b70ebeb9)
+Initialize engine version: 5.0.0p2 (b8242d3df8b0)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
@@ -12,7 +12,7 @@ Platform assembly: E:\GitHub\MechGame\playTest\test_Data\Managed\Assembly-CSharp
 Loading E:\GitHub\MechGame\playTest\test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: E:\GitHub\MechGame\playTest\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading E:\GitHub\MechGame\playTest\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.086 seconds
+- Completed reload, in  0.092 seconds
 desktop: 1920x1080 40Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -20,5 +20,5 @@ desktop: 1920x1080 40Hz; virtual: 1920x1080 at 0,0
 Platform assembly: E:\GitHub\MechGame\playTest\test_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: E:\GitHub\MechGame\playTest\test_Data\Managed\System.dll (this message is harmless)
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1690 -> priority: 1 
-  Thread -> id: 558 -> priority: 1 
+  Thread -> id: 4e4 -> priority: 1 
+  Thread -> id: 2084 -> priority: 1 

@@ -21,6 +21,10 @@ public class TPSCamera : MonoBehaviour {
     private float correctedDistance;
     public float cameraTargetHeight = 5.0f;
 
+
+
+
+
 	// Use this for initialization
 	void Start () {
 
