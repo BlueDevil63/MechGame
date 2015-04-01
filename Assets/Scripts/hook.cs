@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class hook : MonoBehaviour {
+public class Hook : MonoBehaviour {
     public Vector3 hookPosition;
     
 

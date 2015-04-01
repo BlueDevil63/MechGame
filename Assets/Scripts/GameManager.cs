@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
     public static GameManager instance;
-
+    public enum ObjectCategory { WALL, NOMAL, NOHOOK };
 
     void Awake()
     {
