@@ -9,7 +9,7 @@ public class TPSCamera : MonoBehaviour {
     private float cameraY;
 
     private float lerpRate = 5.0f;
-    private float zoomRate = 20;
+    //private float zoomRate = 20;
 
     public float minZoomDistance = 5f;
     public float maxZommDistance = 10f;
@@ -57,9 +57,12 @@ public class TPSCamera : MonoBehaviour {
      //  desireDistance = Mathf.Clamp(desireDistance, minZoomDistance, maxZommDistance);
       // Debug.Log(desireDistance);
        correctedDistance = desireDistance;
-       cameraY = ClampAngle(cameraY, -15, 25);
+       cameraY = ClampAngle(cameraY, -30, 30);
        Quaternion rotation = Quaternion.Euler(cameraY, cameraX, 0);
+       //--------------------------------------------------------------
        Vector3 position = target.position - rotation * Vector3.forward * desireDistance;
+       //위치 = 기준점의 위치 - 회전값* vector*forwar * 기준거리
+      //  --------------------------------------
        bool isCorrected = false;
        RaycastHit colisionHit;
        Vector3 cameraTargetPosition = new Vector3(target.position.x, target.position.y + cameraTargetHeight, target.position.z);

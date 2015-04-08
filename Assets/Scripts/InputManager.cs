@@ -4,11 +4,11 @@ using System.Collections;
 public class InputManager : MonoBehaviour {
     public GameObject player;
     public float moveSpeed = 20.0f;
-    bool isMoving;
+   // bool isMoving;
 
 	// Use this for initialization
 	void Start () {
-        isMoving = false;
+       // isMoving = false;
 	
 	}
 	
@@ -23,68 +23,70 @@ public class InputManager : MonoBehaviour {
         //방향키(십자키 제외)
         if (Input.GetKey(KeyCode.W))
         {
+            /*
             if (Player.instance.isHooking == false)
             {
                 isMoving = true;
                 Player.instance.transform.Translate(0.0f, 0.0f, Time.deltaTime * moveSpeed);
-                isMoving = player.GetComponent<Player>().Movement(isMoving);
-                isMoving = player.GetComponent<Player>().Movement(isMoving);
+                //isMoving = player.GetComponent<Player>().Movement(isMoving);
+                // player.GetComponent<Player>().Movement(isMoving);
             }
-            else if(Player.instance.isHooking == true)
+                */
+           if(Player.instance.isHooking == true)
             {
-                Player.instance.hookZ += 3;
+              //  Player.instance.keyDowns = true;
             }
            // Debug.Log("w");
         }
         if (Input.GetKey(KeyCode.A))
         {
+            /*
             if (Player.instance.isHooking == false)
             {
                 isMoving = true;
                 Player.instance.transform.Translate(Time.deltaTime * -moveSpeed, 0.0f, 0.0f);
-                isMoving = player.GetComponent<Player>().Movement(isMoving);
-                isMoving = player.GetComponent<Player>().Movement(isMoving);
+             //   isMoving = player.GetComponent<Player>().Movement(isMoving);
+               //player.GetComponent<Player>().Movement(isMoving);
             }
-            else if (Player.instance.isHooking == true)
+                */
+            if (Player.instance.isHooking == true)
             {
-                Player.instance.hookX -= 3;
+               // Player.instance.keyDowns = true;
             }
 
         }
         if (Input.GetKey(KeyCode.S))
         {
+            /*
             if (Player.instance.isHooking == false)
             {
                 isMoving = true;
                 Player.instance.transform.Translate(0.0f, 0.0f, Time.deltaTime * -moveSpeed);
-                isMoving = player.GetComponent<Player>().Movement(isMoving);
-                isMoving = player.GetComponent<Player>().Movement(isMoving);
+               // isMoving = player.GetComponent<Player>().Movement(isMoving);
+               // player.GetComponent<Player>().Movement(isMoving);
             }
-            else if (Player.instance.isHooking == true)
+                */
+            if (Player.instance.isHooking == true)
             {
-                Player.instance.hookZ -= 3;
+              //  Player.instance.keyDowns = true;
             }
 
         }
         if (Input.GetKey(KeyCode.D))
-        {
+        {   /*
             if (Player.instance.isHooking == false)
             {
                 isMoving = true;
                 Player.instance.transform.Translate(Time.deltaTime * moveSpeed, 0.0f, 0.0f);
-                isMoving = player.GetComponent<Player>().Movement(isMoving);
-                isMoving = player.GetComponent<Player>().Movement(isMoving);
+             //   isMoving = player.GetComponent<Player>().Movement(isMoving);
+               // player.GetComponent<Player>().Movement(isMoving);
             }
-            else if (Player.instance.isHooking == true)
+            */
+            if (Player.instance.isHooking == true)
             {
-                Player.instance.hookX += 3;
+               // Player.instance.keyDowns = true;
             }
         }
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            
-        }
-
 
         //부스터(점프)-> 스페이스바
         //부스터 중 방향키 입력으로 이동, 
@@ -93,12 +95,14 @@ public class InputManager : MonoBehaviour {
         {
             //player.GetComponent<Player>().
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("space");
-            player.GetComponent<Rigidbody>().velocity = new Vector3(0, 30, 0);
-            player.GetComponent<Player>().jumping = true;
-        }
+      //  if (Input.GetKeyDown(KeyCode.Space))
+      //  {
+      //      Debug.Log("space");
+       //     Player.instance.transform.Translate(0, 10 * Time.deltaTime, 0);
+       //     Player.instance.jumping = true;
+           // player.GetComponent<Rigidbody>().velocity = new Vector3(0, 30, 0);
+          //  player.GetComponent<Player>().jumping = true;
+       // }
         // hook
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -108,7 +112,17 @@ public class InputManager : MonoBehaviour {
         {
 
         }
-
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if(Player.instance.isHooking == true)
+            {
+                if (Player.instance.hookPull == false)
+                {
+                    Player.instance.hookPull = true;
+                }
+                else { Player.instance.hookPull = false; }
+            }
+        }
 
     }
 }
