@@ -8,6 +8,8 @@ public class Hook : MonoBehaviour {
     public GameObject SpawnPoint0;
     public GameObject SpawnPoint1;
     public GameObject AimPoint;
+    public int fireNumber =1;
+     bool hook2fire = false;
   //  bool fire;
    // public GameObject testObject;
     public float shootSpeed = 150.0f;
@@ -30,50 +32,46 @@ public class Hook : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (Player.instance.hookCount > 0)
-            {
+         
 
                 // hookObject.SetActive(false);
-                if (Player.instance.hookCount == 2 || Player.instance.hookCount == 0)
+                if (fireNumber == 1)
                 {                   
-                    if(Player.instance.hookCount == 0)
-                    {
-                        SpawnPoint1.SetActive(true);
-                    }
-
-                    --Player.instance.hookCount;
                    
-                    Vector3 deltapos = shootToward - SpawnPoint0.transform.position;
-                    SpawnPoint0.SetActive(false);
-                    hookers = (GameObject)Instantiate(hookfire, SpawnPoint0.transform.position, SpawnPoint0.transform.rotation);
-                    hookers.GetComponent<Rigidbody>().velocity = deltapos.normalized * shootSpeed;
-                    if (Player.instance.hookCount == 0)
-                    {
-                        ++Player.instance.hookCount;
-                    }
 
+                   
+                   
+                   Vector3 deltapos = shootToward - SpawnPoint0.transform.position;
+                    hookObject0.SetActive(false);
+                    hookers = (GameObject)Instantiate(hookfire, SpawnPoint0.transform.position, SpawnPoint0.transform.rotation);
+                  hookers.GetComponent<Rigidbody>().velocity = deltapos.normalized * shootSpeed;
+                  //  hookers.GetComponent<Rigidbody>().AddForce(SpawnPoint0.transform.forward * shootSpeed);
+                    fireNumber = 2;
+                    if(hook2fire == true)
+                    {
+                        hookObject1.SetActive(true);
+                    }
                 }
+
                 else
                 {
-                    --Player.instance.hookCount;
+                   
                  
                     Vector3 deltapos = shootToward - SpawnPoint1.transform.position;
-                    SpawnPoint1.SetActive(false);
+                     hookObject1.SetActive(false);
                     hookers = (GameObject)Instantiate(hookfire, SpawnPoint1.transform.position, SpawnPoint1.transform.rotation);
-                    hookers.GetComponent<Rigidbody>().velocity = deltapos.normalized * shootSpeed;
-                    SpawnPoint0.SetActive(true);
+                  hookers.GetComponent<Rigidbody>().velocity = deltapos.normalized * shootSpeed;
+                  //  hookers.GetComponent<Rigidbody>().AddForce(SpawnPoint1.transform.forward * shootSpeed);
+                   hookObject0.SetActive(true);
+
 
                 }
-                //   if(Player.instance.hookCount <2)
-                //  {
-                //       Vector3 returnPos = hookers.transform.position - SpawnPoint0.transform.position;
-                //        hookers.GetComponent<Rigidbody>().velocity = returnPos.normalized * shootSpeed;
-                //      ++Player.instance.hookCount;
-                //  }
+          
             }
+
         }
     
-        }
+     
 
 	
 	

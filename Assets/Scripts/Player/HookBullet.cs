@@ -15,11 +15,11 @@ public class HookBullet : MonoBehaviour {
         {
             Player.instance.hookPoint = transform.position;
         }
-        if(!isColl)
-        {
-            transform.position = transform.position - Player.instance.transform.position;
+        //if(!isColl)
+       // {
+        //    transform.position = transform.position - Player.instance.transform.position;
            
-        }
+       // }
         if(transform.position.y <= 0 || transform.position.y >= 40 )
         {
             Destroy(this);
@@ -27,21 +27,37 @@ public class HookBullet : MonoBehaviour {
 	
 	}
 
-   void OnCollisionEnter(Collision coll)
+   void OnCollisionEnter(Collision collision)
    {
-         if(coll.gameObject.tag == "WALL")
+       foreach (ContactPoint contact in collision.contacts)
        {
-           Debug.Log("col!!");
-           Destroy(GetComponent<Rigidbody>());   
-           //대상 위치 = 충돌 위치;
-           transform.position = coll.contacts[0].point;
-           Player.instance.hookPoint = transform.position;
-     
-           Debug.Log(Player.instance.hookPoint);
-           Player.instance.isHooking = true;
-           isColl = true;
+           if (collision.gameObject.tag == "WALL")
+           {
+               Debug.Log("col!!");
+               Destroy(GetComponent<Rigidbody>());
+               //대상 위치 = 충돌 위치;
+               transform.position = collision.contacts[0].point;
+               PlayerMovement.instance.hookPoint = transform.position;
 
+               Debug.Log(Player.instance.hookPoint);
+               PlayerMovement.instance.isHooking = true;
+               isColl = true;
+
+           }
+           if (collision.gameObject.tag == "NOMALHOOK")
+           {
+               Debug.Log("col!!");
+               Destroy(GetComponent<Rigidbody>());
+               //대상 위치 = 충돌 위치;
+               transform.position = collision.contacts[0].point;
+               Player.instance.hookPoint = transform.position;
+               Debug.Log(Player.instance.hookPoint);
+               Player.instance.isHooking = true;
+               isColl = true;
+
+           }
        }
    }
+
 
 }
