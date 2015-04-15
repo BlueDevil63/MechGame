@@ -2,13 +2,11 @@
 using System.Collections;
 
 public class Hook : MonoBehaviour {
-    public GameObject hookObject0;
-    public GameObject hookObject1;
     public GameObject hookfire;
     public GameObject SpawnPoint0;
     public GameObject SpawnPoint1;
     public GameObject AimPoint;
-    public int fireNumber =1;
+    public int fireNumber =2;
      bool hook2fire = false;
   //  bool fire;
    // public GameObject testObject;
@@ -32,39 +30,35 @@ public class Hook : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-         
-
                 // hookObject.SetActive(false);
-                if (fireNumber == 1)
-                {                   
-                   
-
-                   
-                   
+                if (fireNumber == 2)
+                {
+                    if (hook2fire == true)
+                    {
+                        Debug.Log("Destroy");
+                        GameObject hooks = GameObject.Find("/hook(Clone)");
+                        Destroy(hooks);
+                        hook2fire = false;
+                    }
                    Vector3 deltapos = shootToward - SpawnPoint0.transform.position;
-                    hookObject0.SetActive(false);
+                
                     hookers = (GameObject)Instantiate(hookfire, SpawnPoint0.transform.position, SpawnPoint0.transform.rotation);
                   hookers.GetComponent<Rigidbody>().velocity = deltapos.normalized * shootSpeed;
                   //  hookers.GetComponent<Rigidbody>().AddForce(SpawnPoint0.transform.forward * shootSpeed);
-                    fireNumber = 2;
-                    if(hook2fire == true)
-                    {
-                        hookObject1.SetActive(true);
-                    }
+                  --fireNumber;
+                  
                 }
-
                 else
                 {
-                   
-                 
-                    Vector3 deltapos = shootToward - SpawnPoint1.transform.position;
-                     hookObject1.SetActive(false);
+                    GameObject hooks = GameObject.Find("/hook(Clone)");
+                    Destroy(hooks);
+                    Vector3 deltapos = shootToward - SpawnPoint1.transform.position;      
                     hookers = (GameObject)Instantiate(hookfire, SpawnPoint1.transform.position, SpawnPoint1.transform.rotation);
                   hookers.GetComponent<Rigidbody>().velocity = deltapos.normalized * shootSpeed;
-                  //  hookers.GetComponent<Rigidbody>().AddForce(SpawnPoint1.transform.forward * shootSpeed);
-                   hookObject0.SetActive(true);
-
-
+                  //  hookers.GetComponent<Rigidbody>().AddForce(SpawnPoint1.transform.forward * shootSpeed);     
+                    fireNumber++;
+                    hook2fire = true;
+                  
                 }
           
             }

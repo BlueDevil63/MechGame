@@ -4,7 +4,21 @@ using System.Collections;
 public class Player : MonoBehaviour {
  
     public float hookRate;
-
+    public enum PLAYERSTATE  {
+        IDLE,
+        RUN,
+        JUMP,
+        WALLJUMP,
+        BUSTER,
+        CLIMB,
+        HOOKING,
+        LATTACK,
+        SATTACK,
+        GUARD,
+        DAMAGED
+    }
+    public PLAYERSTATE currentPlayerState;
+    public PLAYERSTATE beforePlayState;
     //-------hook관련---
 
     public Vector3 hookPoint;               //hook이 충돌한 지점
@@ -26,9 +40,16 @@ public class Player : MonoBehaviour {
     //플레이어 능력치
     int weight;
     int pPower;
-    float pHp;                                //파츠의 총합
-   public float pBuster = 60.0f;                             //백팩의 수치
-    public float pVelocity = 15.0f;            //다리속도 = 각파츠의 총합
+    public float pVelocity = 15.0f;             //다리속도 = 각파츠의 총합
+ 
+    public float pHp;                                //파츠의 총합
+    //부스터용
+    public float pBuster = 60.0f;                                   //백팩의 수치= 부스터의 속도
+    public float pBssterRate = 5.0f;                                //부스터가 소비되는 단위
+    public float pBusterCoolingRate = 10.0f;                         //쿨링시간
+    public float pBusterGage  = 100.0f;                              //부스터의 총량          
+   
+
     /*
     //--------buster-------
     int busterPower;
@@ -53,7 +74,7 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
     void Start()
     {
-        
+        currentPlayerState = PLAYERSTATE.IDLE;
          isHooking = false;
       //   Vector3 Angles = transform.eulerAngles;
         // horizontal = Angles.x;

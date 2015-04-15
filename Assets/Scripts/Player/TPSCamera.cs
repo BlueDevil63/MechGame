@@ -15,14 +15,11 @@ public class TPSCamera : MonoBehaviour {
     public float maxZommDistance = 10f;
 
     private float desireDistance;
-    public float distance = 6.0f;
+    public float distance = 10.0f;
 
     private float currentDistance;
     private float correctedDistance;
     public float cameraTargetHeight = 5.0f;
-
-
-
 
 
 	// Use this for initialization
