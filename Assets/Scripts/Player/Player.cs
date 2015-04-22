@@ -45,7 +45,7 @@ public class Player : MonoBehaviour {
     public float pHp;                                //파츠의 총합
     //부스터용
     public float pBuster = 60.0f;                                   //백팩의 수치= 부스터의 속도
-    public float pBssterRate = 5.0f;                                //부스터가 소비되는 단위
+    public float pBssterRate = 15.0f;                                //부스터가 소비되는 단위
     public float pBusterCoolingRate = 10.0f;                         //쿨링시간
     public float pBusterGage  = 100.0f;                              //부스터의 총량          
    
