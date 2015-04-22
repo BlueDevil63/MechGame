@@ -15,7 +15,7 @@ public class TPSAimShoot : MonoBehaviour
      public GameObject gun;
      public GameObject bullet;
      public GameObject gunSpawnPoint;
-     //public GameObject gunHand;
+   
     // public GameObject AimPoint;
      public int fireNumber = 2;
      bool hook2fire = false;
@@ -29,15 +29,13 @@ public class TPSAimShoot : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
         Ray ray = pCamera.ViewportPointToRay(new Vector3( 0.5f, 0.6f, 0));
 
         Debug.DrawRay(ray.origin, ray.direction * 200, Color.green);
         if(Physics.Raycast(ray.origin, ray.direction*200, out hit))
         {
-           // gunHand.transform.LookAt(hit.point);
             gun.transform.LookAt(hit.point);
-            
            // Debug.Log(hit.point);
             HookShoot(hit.point);
             GunShoot(hit.point);
