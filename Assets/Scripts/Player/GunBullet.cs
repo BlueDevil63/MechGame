@@ -12,4 +12,12 @@ public class GunBullet : MonoBehaviour {
 	void Update () {
 	
 	}
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.gameObject.tag == "WALL")
+        {
+            Destroy(this);
+            Debug.Log("wall col");
+        }
+    }
 }
