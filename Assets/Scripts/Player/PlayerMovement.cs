@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour {
     float mVelocity;
     float mBust;
     float jumpSpeed = 30.0f;
-    float buster;
+    public float buster;
     CharacterController pController;
     Animator mAni; 
 	// Use this for initialization
@@ -71,6 +71,7 @@ public class PlayerMovement : MonoBehaviour {
         float z = 0;
 
         //부스터 체크;
+   
         if (Input.GetButton("BustOn") && buster >0)  //"BustOn = left shift  버튼이 눌려있다면 액션
         {
             buster = BusterRating(buster, Player.instance.pBssterRate, Player.instance.pBusterCoolingRate, true);
@@ -169,6 +170,10 @@ public class PlayerMovement : MonoBehaviour {
         }
         */
         //부스터가 켜져있으면 중력이 작용하지 않음
+        if (buster < 1)
+        {
+            busterOn = false;
+        }
         if (!busterOn)
         {
             moveDirection.y = PGravity(moveDirection.y);
@@ -202,11 +207,11 @@ public class PlayerMovement : MonoBehaviour {
     {
         if(wDir == wallDirection.LEFT)
         { 
-            moveDir =  new Vector3(10, jumpSpeed, 10);       
+            moveDir =  new Vector3(15, jumpSpeed, 15);       
         }
         if (wDir == wallDirection.RIGHT)
         {
-            moveDir = new Vector3(-10, jumpSpeed, 10);
+            moveDir = new Vector3(-15, jumpSpeed, 15);
         }
 
         moveDir = transform.TransformDirection(moveDir);
@@ -346,11 +351,12 @@ public class PlayerMovement : MonoBehaviour {
             {
                 return bust;
             }
-             bust += bCool * Time.deltaTime;
+             bust += bCool/2 * Time.deltaTime;
         }
         if (bust > 0 && (busterOn == true))
         {
-            bust -= Time.deltaTime*3 * bRate;
+            bust -= Time.deltaTime*5 * bRate;
+            
         }
         return bust;
         

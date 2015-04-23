@@ -2,8 +2,9 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class GUIManager : MonoBehaviour {
-    public Image boosterImage;
+public class BoosterGage : MonoBehaviour {
+
+   Image boosterImage;
     public float boosterGage;
     public float boosterMov;
 
@@ -23,5 +24,10 @@ public class GUIManager : MonoBehaviour {
     void BoosterUpdate()
     {
         boosterImage.fillAmount = boosterMov / boosterGage;
+        if (boosterImage.fillAmount < 0.45)
+        {
+            boosterImage.color = Color.red;
+        }
+        else { boosterImage.color = Color.yellow; }
     }
 }
