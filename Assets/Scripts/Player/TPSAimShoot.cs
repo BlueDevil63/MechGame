@@ -92,7 +92,7 @@ public class TPSAimShoot : MonoBehaviour
         // Vector3 shootToward;
         // shootToward = AimPoint.transform.position;
         gunSpawnPoint.transform.LookAt(AimPoint);
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             Vector3 deltapos = AimPoint - gunSpawnPoint.transform.position;
             GameObject insBullet = (GameObject)Instantiate(bullet, gunSpawnPoint.transform.position, gunSpawnPoint.transform.rotation);

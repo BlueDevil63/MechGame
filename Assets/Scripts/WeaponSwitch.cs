@@ -7,6 +7,7 @@ public class WeaponSwitch : MonoBehaviour {
     public Transform weapon2;
     public Transform bone;
     public Transform currentWeapon;
+    //Quaternion rotation = Quaternion.EulerAngles(30, 0, 0);
 
 	// Use this for initialization
 	void Start () {
