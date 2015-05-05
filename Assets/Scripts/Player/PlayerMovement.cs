@@ -21,11 +21,13 @@ public class PlayerMovement : MonoBehaviour {
     //관련 변수
     //------플레이어 관련-----
     public Vector3 moveDirection = Vector3.zero;
-    public float gravity = 60.0f;
+    public float gravity = 10.0f;
     float mVelocity;
     float mBust;
-    float jumpSpeed = 30.0f;
+    float jumpSpeed = 20.0f;
     public float buster;
+    float bustRateTime;
+    float bustStateTime;
     CharacterController pController;
     Animator mAni; 
 	// Use this for initialization
@@ -51,6 +53,8 @@ public class PlayerMovement : MonoBehaviour {
         mAni = Player.instance._animator;
         wDir = wallDirection.NONE;
         buster = Player.instance.pBuster;
+        bustRateTime = Player.instance.pBusterCoolingRate/2;
+        bustStateTime = 0;
         
     }
 	
@@ -59,6 +63,18 @@ public class PlayerMovement : MonoBehaviour {
         Player.instance.beforePlayState = Player.instance.currentPlayerState;
         PMovement();
         AniController(Player.instance.currentPlayerState);
+        if(busterOn == false)
+        {
+            if (bustStateTime < bustRateTime && buster ==0)
+            {
+                bustStateTime += Time.deltaTime/2;
+            }
+            else
+            {
+                buster = BusterRating(buster, Player.instance.pBssterRate, Player.instance.pBusterCoolingRate, false);
+                bustStateTime = 0;
+            }
+        }
 	}
    // void Update()
    //// {
@@ -89,16 +105,37 @@ public class PlayerMovement : MonoBehaviour {
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection *= mBust;
                // Player.instance.playState = Player.PLAYERSTATE.BUSTER;
+                /*
+                if(x>= 0 && z==0)
+                {
+                    mAni.SetFloat("booster", 6);
+                }
+                if(x<=0 && z==0)
+                {
+                    mAni.SetFloat("booster", 8);
+                }
+                if (x == 0 && z >= 0)
+                {
+                    mAni.SetFloat("booster", 2);
+                }
+                if (x == 0 && z <= 0)
+                {
+                    mAni.SetFloat("booster", 4);
+                }
+                */
+                
+               
             }
             else
             {
-                moveDirection.y = PJumpBust(moveDirection.y, mBust);   
-                
-            }
+                moveDirection.y = PJumpBust(moveDirection.y, mBust);
+                //mAni.SetFloat("booster", 2);
+               // 
+            } 
             Player.instance.currentPlayerState = Player.PLAYERSTATE.BUSTER;
             boosterEffect.SetActive(true);
         
-           Debug.Log(buster);
+         ;
            
         }
         else if (Input.GetButton("HookPull"))
@@ -151,7 +188,7 @@ public class PlayerMovement : MonoBehaviour {
                 }
                 wDir = wallDirection.NONE;
                 jumping = true;
-                Debug.Log("jump and isGround" + pController.isGrounded);
+               
                 Player.instance.currentPlayerState = Player.PLAYERSTATE.JUMP;
             }
         else
@@ -173,18 +210,20 @@ public class PlayerMovement : MonoBehaviour {
         if (buster < 1)
         {
             busterOn = false;
+            //mAni.SetFloat("booster", 0);
         }
         if (!busterOn)
         {
             moveDirection.y = PGravity(moveDirection.y);
             boosterEffect.SetActive(false);
-            buster = BusterRating(buster, Player.instance.pBssterRate, Player.instance.pBusterCoolingRate, false);
+           // buster = BusterRating(buster, Player.instance.pBssterRate, Player.instance.pBusterCoolingRate, false);
             
         }
 
         pController.Move(moveDirection * Time.deltaTime);
     
     }
+
     //중력 함수 ----------------------------------------
     float PGravity(float moveDirectionY)
     {
@@ -305,7 +344,7 @@ public class PlayerMovement : MonoBehaviour {
         switch(state)
         {
             case  Player.PLAYERSTATE.IDLE :               
-                if (Player.instance.beforePlayState == Player.PLAYERSTATE.RUN)
+               if (Player.instance.beforePlayState == Player.PLAYERSTATE.RUN)
                     mAni.SetBool("run", false);
                 if (Player.instance.beforePlayState == Player.PLAYERSTATE.JUMP)
                     mAni.SetBool("jump", false);
@@ -318,15 +357,15 @@ public class PlayerMovement : MonoBehaviour {
             case Player.PLAYERSTATE.RUN :                
                 if (Player.instance.beforePlayState == Player.PLAYERSTATE.IDLE)
                     mAni.SetBool("idle", false);
-                if (Player.instance.beforePlayState == Player.PLAYERSTATE.JUMP)
+               if (Player.instance.beforePlayState == Player.PLAYERSTATE.JUMP)
                     mAni.SetBool("jump", false);
-                mAni.SetBool("run", true);
+                mAni.SetBool("run", true );
                 break;
             case Player.PLAYERSTATE.JUMP:
                 if (Player.instance.beforePlayState == Player.PLAYERSTATE.IDLE)
                     mAni.SetBool("idle", false);
                 if (Player.instance.beforePlayState == Player.PLAYERSTATE.RUN)
-                    mAni.SetBool("run", false);
+                   mAni.SetBool("run", false);
                 mAni.SetBool("jump", true);
                 break;
             case Player.PLAYERSTATE.BUSTER:

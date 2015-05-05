@@ -8,12 +8,17 @@ public class WeaponSwitch : MonoBehaviour {
     public Transform bone;
     public Transform currentWeapon;
     //Quaternion rotation = Quaternion.EulerAngles(30, 0, 0);
-
+    Quaternion rot;
+    Vector3 pos;
 	// Use this for initialization
 	void Start () {
-        currentWeapon = Instantiate(weapon1, bone.position, bone.rotation) as Transform;
+
+        rot = bone.localRotation;
+        rot.x += 30;
+        pos = bone.position;
+       // pos.x += 1;
+        currentWeapon = Instantiate(weapon1, bone.position, rot) as Transform;
         currentWeapon.parent = bone;
-	
 	}
 	
 	// Update is called once per frame
@@ -24,12 +29,12 @@ public class WeaponSwitch : MonoBehaviour {
             {
                 if (currentWeapon.name == "weapon1(Clone)")
                 {
-                    removeCurrentWeapon(); currentWeapon = Instantiate(weapon2, bone.position, bone.rotation) as Transform;
+                    removeCurrentWeapon(); currentWeapon = Instantiate(weapon2, bone.position, rot) as Transform;
                     currentWeapon.parent = bone;
                 }
                 else
                 {
-                    removeCurrentWeapon(); currentWeapon = Instantiate(weapon1, bone.position, bone.rotation) as Transform;
+                    removeCurrentWeapon(); currentWeapon = Instantiate(weapon1, bone.position,rot) as Transform;
                     currentWeapon.parent = bone;
                 }
             }

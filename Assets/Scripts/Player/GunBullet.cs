@@ -16,8 +16,12 @@ public class GunBullet : MonoBehaviour {
     {
         if (coll.gameObject.tag == "WALL")
         {
-            Destroy(this);
+            Destroy(this.gameObject);
             Debug.Log("wall col");
+        }
+        if(coll.gameObject.tag == "ENEMY")
+        {
+            Destroy(this.gameObject);
         }
     }
 }

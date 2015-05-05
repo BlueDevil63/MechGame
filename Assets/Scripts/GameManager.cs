@@ -8,11 +8,12 @@ public class GameManager : MonoBehaviour {
     void Awake()
     {
         instance = this;
+       
     }
 
 	// Use this for initialization
 	void Start () {
-	
+        Cursor.visible = false;
 	}
 	
 	// Update is called once per frame

@@ -4,7 +4,7 @@ using System.Collections;
 public class TPSCamera : MonoBehaviour {
     public Transform target;
 
-    public float rotateSpeed = 5;
+    public float rotateSpeed = 15;
     private  float cameraX;
     private float cameraY;
 
@@ -38,8 +38,8 @@ public class TPSCamera : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
 
-        cameraX += Input.GetAxis("Mouse X") * rotateSpeed;
-        cameraY += Input.GetAxis("Mouse Y") * rotateSpeed;
+        cameraX += Input.GetAxis("AimX") * rotateSpeed;
+        cameraY += Input.GetAxis("AimY") * rotateSpeed;
         
       // if(Input.GetAxis("Vertical") !=0 || Input.GetAxis("Horizontal") != 0)
         if(Input.GetKeyDown(KeyCode.C))
