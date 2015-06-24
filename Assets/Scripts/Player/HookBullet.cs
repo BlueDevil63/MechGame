@@ -15,11 +15,6 @@ public class HookBullet : MonoBehaviour {
         {
             Player.instance.hookPoint = transform.position;
         }
-        //if(!isColl)
-       // {
-        //    transform.position = transform.position - Player.instance.transform.position;
-           
-       // }
         if(transform.position.y <= 0 || transform.position.y >= 40 )
         {
             Destroy(this);
@@ -37,10 +32,10 @@ public class HookBullet : MonoBehaviour {
                Destroy(GetComponent<Rigidbody>());
                //대상 위치 = 충돌 위치;
                transform.position = collision.contacts[0].point;
-               PlayerMovement.instance.hookPoint = transform.position;
+               Player.instance.hookPoint = transform.position;
 
                Debug.Log(Player.instance.hookPoint);
-               PlayerMovement.instance.isHooking = true;
+               Player.instance.isHooking = true;
                isColl = true;
 
            }
@@ -58,6 +53,4 @@ public class HookBullet : MonoBehaviour {
            }
        }
    }
-
-
 }

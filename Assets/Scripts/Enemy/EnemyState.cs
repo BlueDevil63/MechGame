@@ -20,7 +20,7 @@ public class EnemyState : MonoBehaviour {
 
     private Animator _animator;
 
-    private Transform target;
+    private Transform target = null;
     
     
     public enum ENEMYSTATE
@@ -52,21 +52,24 @@ public class EnemyState : MonoBehaviour {
         dicState[ENEMYSTATE.DAMAGE] = Damage;
         dicState[ENEMYSTATE.DEAD] = Dead;
 
-        FindPlayer();
+       // FindPlayer();
     }
     // Update is called once per frame
     void Update()
     {
-
+        if(target == null)
+        {
+            FindPlayer();
+        }
         distance = (target.position - transform.position).magnitude;
         dicState[enemyState]();
        
     }
     void FindPlayer()
     {
-
-        target = GameObject.Find("Player").transform;
-
+        GameObject gTarget = GameObject.Find("Player");
+       // target = GameObject.Find("Player").transform;
+        target = gTarget.GetComponentInChildren<Transform>();
         charController = GetComponent<CharacterController>();
     }
 

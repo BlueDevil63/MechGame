@@ -5,8 +5,8 @@ public class TPSAimShoot : MonoBehaviour
 {
 
     RaycastHit hit;
-    
-     public Camera pCamera;
+
+    public Camera pCamera = null;
     //hooks
      public GameObject hookBullet;
      public GameObject spawnPoint0;
@@ -23,13 +23,18 @@ public class TPSAimShoot : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-      //  gun = GameObject.Find("/Player/PrototypeGun");
-        
-      //  Debug.Log(gun.name);
+      // GameObject dummyCamera = GameObject.FindGameObjectWithTag("MainCamera");
+     //  pCamera = dummyCamera.GetComponent<Camera>();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+       if(pCamera == null)
+        {
+           GameObject dummyCamera = GameObject.FindGameObjectWithTag("MainCamera");
+          pCamera = dummyCamera.GetComponent<Camera>();
+          Debug.Log("카메라 할당");
+        }
         Ray ray = pCamera.ViewportPointToRay(new Vector3( 0.5f, 0.6f, 0));
 
         Debug.DrawRay(ray.origin, ray.direction * 200, Color.green);

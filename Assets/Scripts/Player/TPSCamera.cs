@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class TPSCamera : MonoBehaviour {
-    public Transform target;
+    Transform target = null;
 
     public float rotateSpeed = 15;
     private  float cameraX;
@@ -24,7 +24,8 @@ public class TPSCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        //GameObject dTarget = GameObject.Find("Player");
+      // target = dTarget.GetComponentInChildren<Transform>();
         Vector3 Angles = transform.eulerAngles;
         cameraX = Angles.x;
         cameraY = Angles.y;
@@ -37,6 +38,11 @@ public class TPSCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate () {
+        if( target == null)
+        {
+            GameObject dTarget = GameObject.Find("Player");
+            target = dTarget.GetComponentInChildren<Transform>();
+        }
 
         cameraX += Input.GetAxis("AimX") * rotateSpeed;
         cameraY += Input.GetAxis("AimY") * rotateSpeed;
