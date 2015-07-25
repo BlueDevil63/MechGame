@@ -6,4 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scens/battleScene.unity
+    path: Assets/Scens/MainMenu.unity
+  - enabled: 1
+    path: Assets/Scens/CustomizeScene.unity
+  - enabled: 1
+    path: Assets/Scens/BattleScene.unity
+  - enabled: 1
+    path: Assets/Scens/MapScene.unity

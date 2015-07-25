@@ -15,6 +15,7 @@ public class Player : MonoBehaviour {
         HOOKING,
         LATTACK,
         SATTACK,
+        PUNCH,
         GUARD,
         DAMAGED
     }
@@ -129,6 +130,12 @@ public class Player : MonoBehaviour {
        
         beforePlayState = currentPlayerState;
         PMovement();
+        if(Input.GetButton("Fire2"))
+        {
+          //  mAni.SetBool("punch", true);
+           currentPlayerState = PLAYERSTATE.PUNCH;
+            mAni.SetTrigger("punch");
+        }
         AniController(currentPlayerState);
         if (busterOn == false)
         {
@@ -428,8 +435,8 @@ public class Player : MonoBehaviour {
                     mAni.SetBool("jump", false);
                 if (beforePlayState == PLAYERSTATE.BUSTER)
                     mAni.SetBool("jump", false);
-
-                mAni.SetBool("jump", false);
+               // if (beforePlayState == PLAYERSTATE.PUNCH)
+              //      mAni.SetBool("punch", false);
                 mAni.SetBool("idle", true);
                 break;
             case PLAYERSTATE.RUN:
@@ -437,6 +444,10 @@ public class Player : MonoBehaviour {
                     mAni.SetBool("idle", false);
                 if (beforePlayState == PLAYERSTATE.JUMP)
                     mAni.SetBool("jump", false);
+                if (beforePlayState == PLAYERSTATE.BUSTER)
+                    mAni.SetBool("jump", false);
+               // if (beforePlayState == PLAYERSTATE.PUNCH)
+               //     mAni.SetBool("punch", false);
                 mAni.SetBool("run", true);
                 break;
             case PLAYERSTATE.JUMP:
@@ -444,6 +455,8 @@ public class Player : MonoBehaviour {
                     mAni.SetBool("idle", false);
                 if (beforePlayState == PLAYERSTATE.RUN)
                     mAni.SetBool("run", false);
+              //  if (beforePlayState == PLAYERSTATE.PUNCH)
+               //     mAni.SetBool("punch", false);
                 mAni.SetBool("jump", true);
                 break;
             case PLAYERSTATE.BUSTER:
@@ -453,9 +466,26 @@ public class Player : MonoBehaviour {
                     mAni.SetBool("run", false);
                 if (beforePlayState == PLAYERSTATE.JUMP)
                     mAni.SetBool("jump", false);
+               // if (beforePlayState == PLAYERSTATE.PUNCH)
+                //    mAni.SetBool("punch", false);
                 mAni.SetBool("jump", true);
                 break;
+                 
+            case PLAYERSTATE.PUNCH:
+               
+                if (beforePlayState == PLAYERSTATE.IDLE)
+                    mAni.SetBool("idle", false);
+                if (beforePlayState == PLAYERSTATE.RUN)
+                    mAni.SetBool("run", false);
+                if (beforePlayState == PLAYERSTATE.JUMP)
+                    mAni.SetBool("jump", false);
+                if (beforePlayState == PLAYERSTATE.BUSTER)
+                   mAni.SetBool("jump", false);
+               // mAni.SetBool("punch", true);
+                 
+                break;
 
+                
         }
     }
     float BusterRating(float bust, float bRate, float bCool, bool bustOn)

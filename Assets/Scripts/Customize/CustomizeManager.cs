@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.Collections;
 
 public class CustomizeManager : MonoBehaviour {
@@ -31,8 +33,10 @@ public class CustomizeManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E))
         {
             GameObject prefabPlayer = GameObject.Find("Player");
+            #if UNITY_EDITOR
             emptyObj = PrefabUtility.CreateEmptyPrefab("Assets/Resources/CPlayer.prefab");
             PrefabUtility.ReplacePrefab(prefabPlayer, emptyObj, ReplacePrefabOptions.ConnectToPrefab);
+             #endif
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
@@ -41,6 +45,11 @@ public class CustomizeManager : MonoBehaviour {
         }
 	}
 
+
+    public void CustomExit()
+    {
+        Application.LoadLevel("MapScene");
+    }
     void GeneratePlayer()
     {
         spawnPoint = GameObject.Find("SpawnPoint");
@@ -54,12 +63,14 @@ public class CustomizeManager : MonoBehaviour {
 
     public IEnumerator SavePrefab()
     {
+#if UNITY_EDITOR
         GameObject prefabPlayer = GameObject.Find("Player");
         emptyObj = PrefabUtility.CreateEmptyPrefab("Assets/Resources/CPlayer.prefab");
         PrefabUtility.ReplacePrefab(prefabPlayer, emptyObj, ReplacePrefabOptions.ConnectToPrefab);
         // GameObject playerModel = GameObject.Find("Player");
         playerModelChildren = prefabPlayer.GetComponentsInChildren<Transform>();
-
+              
+        #endif
         yield return null;
     }
 }
