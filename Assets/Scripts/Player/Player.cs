@@ -53,8 +53,8 @@ public class Player : MonoBehaviour {
     public bool isHooking = false;
    
     //플레이어 능력치
-    int weight;
-    int pPower;
+    public int pWeight;
+    public int pPower;
     public float pVelocity = 15.0f;             //다리속도 = 각파츠의 총합
 
     public float pHp = 100;                          //파츠의 총합
@@ -63,9 +63,9 @@ public class Player : MonoBehaviour {
     public float pBoost;                                        //변화되는값
     public  float pBoostGage = 60.0f;                             //백팩의 수치= 부스터의 속도
     public float pBoostRate = 15.0f;                                //부스터가 소비되는 단위
-    float pBoostCoolingRate = 5.0f;                         //쿨링시간
+    public float pBoostCoolingRate = 5.0f;                         //쿨링시간
    // public  float pBoosterGage  = 100.0f;                              //부스터의 총량          
-    float boostStateTime;
+    public float pBoostStateTime;
     //-----변수
     public bool jumping = false;
     public bool busterOn = false;
@@ -86,7 +86,7 @@ public class Player : MonoBehaviour {
     //-----기타 개수 체크용-----
     public int selectMemory;
     public List<string> iMemorys  = new List<string>();
-    int optionModule;
+    //int optionModule;
     Vector3 inMemoryPoint;
     //IMData imStruct;
     public static Player instance;
@@ -139,14 +139,14 @@ public class Player : MonoBehaviour {
         AniController(currentPlayerState);
         if (busterOn == false)
         {
-            if (boostStateTime < pBoostCoolingRate && pBoost== 0)
+            if (pBoostStateTime < pBoostCoolingRate && pBoost== 0)
             {
-                boostStateTime += Time.deltaTime / 2;
+                pBoostStateTime += Time.deltaTime / 2;
             }
             else
             {
                 pBoost= BusterRating(pBoost, pBoostRate, pBoostCoolingRate, false);
-                boostStateTime = 0;
+                pBoostStateTime = 0;
             }
         }
         if (Input.GetButton("UseInventory"))
