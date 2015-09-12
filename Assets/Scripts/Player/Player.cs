@@ -45,7 +45,12 @@ public class Player : MonoBehaviour {
     bool hookdistB;                        //회전값을 계산했는지
    public float hookDist;                      //hook과의 거리
     */
-  
+    //
+    //TPS에 의한 상체 회전
+    public Transform[] bodySpineBone;
+
+
+
     //hook 관련변수
     public Vector3 hookPoint;       //hook이 충돌한 지점
     public float hookRate;
@@ -72,16 +77,25 @@ public class Player : MonoBehaviour {
     public bool isMoving = false;
   
     bool hookWall = false;
+    bool isGround = false;
  
     //관련 변수
     //------플레이어 관련-----
     public Vector3 moveDirection = Vector3.zero;
-    public float gravity = 10.0f;
-    float jumpSpeed = 20.0f;
+    //중력관련
+    private Vector3 grav;
+    private float gravity = 100.0f;
+
+    private float jumpSpeed = 20.0f;
     //--------이펙트
     public GameObject boosterEffect;
+
+
+    //-------컴포넌트
     CharacterController pController;
     Animator mAni;
+    private CollisionFlags collisionFlags;
+   
 
     //-----기타 개수 체크용-----
     public int selectMemory;
@@ -111,23 +125,21 @@ public class Player : MonoBehaviour {
          iMemorys.Add("memory1");
          iMemorys.Add("memory2");
          iMemorys.Add("memory2");
+        pController.Move(Vector3.zero);
     }
-
-	// Update is called once per frame
-    /*
-	void Update () 
+  
+   void LateUpdate()
     {
-       if(Input.GetButton("UseInventory"))
-     {
-           UseInventory();
-      } 
-    
-	}
-   */
-    void FixedUpdate()
+        foreach(Transform spine in bodySpineBone)
+        {
+            spine.RotateAround(spine.position, transform.right, TPSCamera.instance.cameraY/bodySpineBone.Length);
+        }
+        
+    }
+   
+    void Update()
     {
-
-       
+        
         beforePlayState = currentPlayerState;
         PMovement();
         if(Input.GetButton("Fire2"))
@@ -152,10 +164,7 @@ public class Player : MonoBehaviour {
         if (Input.GetButton("UseInventory"))
             UseInventory();
     }
-    void SumSatetus()
-    {
 
-    }
     void ShortAttack()
     {
 
@@ -198,6 +207,8 @@ public class Player : MonoBehaviour {
 
     public void PMovement()
     {
+        Debug.Log("isGrouded =" + pController.isGrounded);
+        Debug.Log((IsGrounded()&&isGround) +" = ( 함수 "+ IsGrounded() +") * (변수" + isGround);
         float x = 0;
         float z = 0;
 
@@ -228,6 +239,7 @@ public class Player : MonoBehaviour {
             currentPlayerState = PLAYERSTATE.BUSTER;
             boosterEffect.SetActive(true);
         }
+
         else if (Input.GetButton("HookPull"))
         {
             busterOn = false;
@@ -236,8 +248,12 @@ public class Player : MonoBehaviour {
                 moveDirection = HookingPull(moveDirection);
             }
         }
+
+
         //지면에서의 움직임, 
-        else if (pController.isGrounded)        //지면에 닿아있는지 체크
+       
+   else if (pController.isGrounded)        //지면에 닿아있는지 체크
+      // else if(IsGrounded()&&isGround)
         {
             busterOn = false;
             x += Input.GetAxis("Horizontal");
@@ -280,28 +296,16 @@ public class Player : MonoBehaviour {
         {
             busterOn = false;
         }
-        /*
-    else
-    {
-       busterOn = false;
-          
-            jumping = false;
-           currentPlayerState = PLAYERSTATE.IDLE;
-            //mAni.SetBool("run", false);
-            //mAni
-    }
-    */
+
         //부스터가 켜져있으면 중력이 작용하지 않음
         if (pBoost< 1)
         {
             busterOn = false;
-            //mAni.SetFloat("booster", 0);
         }
         if (!busterOn)
         {
             moveDirection.y = PGravity(moveDirection.y);
             boosterEffect.SetActive(false);
-            // buster = BusterRating(buster, pBssterRate, pBusterCoolingRate, false);
 
         }
 
@@ -319,7 +323,8 @@ public class Player : MonoBehaviour {
     /// 점프 함수-------------------------------------------------------------------------------
     public float PJumpBust(float moveDirectionY, float jSpeed)
     {
-        if (pController.isGrounded)
+        //if (pController.isGrounded)
+        if(IsGrounded()&&isGround)
         {
             moveDirectionY += jSpeed;
 
@@ -384,6 +389,11 @@ public class Player : MonoBehaviour {
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         float dist = 6.0f;
+        Vector3 directionR = transform.TransformDirection(Vector3.right);
+        Vector3 directionL = transform.TransformDirection(Vector3.left);
+        Vector3 directionUp = transform.TransformDirection(new Vector3(0, 1, 1));
+        Vector3 directionDown = transform.TransformDirection(new Vector3(0, -1, 0));
+        RaycastHit wallHit;
         // Rigidbody body = hit.collider.attachedRigidbody;
         if (hit.gameObject.tag == "WALL")
         {
@@ -391,10 +401,7 @@ public class Player : MonoBehaviour {
             {
                 hookWall = true;
             }
-            Vector3 directionR = transform.TransformDirection(Vector3.right);
-            Vector3 directionL = transform.TransformDirection(Vector3.left);
-            Vector3 directionUp = transform.TransformDirection(new Vector3(0, 1, 1));
-            RaycastHit wallHit;
+
 
             if (Physics.Raycast(transform.position, directionR, out wallHit, dist))
             {
@@ -417,9 +424,21 @@ public class Player : MonoBehaviour {
                     wDir = wallDirection.CLIMB;
                 }
             }
-        }
 
-        else { wDir = wallDirection.NONE; }
+        }
+        else if (hit.controller.detectCollisions)
+        {
+            if (Physics.Raycast(transform.position, directionDown, out wallHit, dist / 10))
+            {
+                isGround = true;
+            }
+
+        }
+        else
+        {
+            wDir = wallDirection.NONE;
+            isGround = false;
+        }
         // Vector3 wallJump = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
         // body.velocity = wallJump * jumpSpeed;
     }
@@ -507,7 +526,29 @@ public class Player : MonoBehaviour {
         }
         return bust;
     } 
-    
-  
+    public bool IsGrounded()
+    {
+        return (CollisionFlags.CollidedBelow) != 0;
+    }
+  bool GroundHit()
+    {
+        float dist = 0.18f;
+        RaycastHit hit;
+        Vector2 startRay = transform.position;
+        startRay.y += 4.0f;
+        Vector3 directionDown = transform.TransformDirection(new Vector3(0, -1, 0));
+        Debug.DrawRay(transform.position, directionDown* dist, Color.red );
+        if (Physics.Raycast(startRay, directionDown, out hit, dist ))
+        {
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+     
+
+    }
 
 }

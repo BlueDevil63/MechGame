@@ -3,10 +3,11 @@ using System.Collections;
 
 public class TPSCamera : MonoBehaviour {
     Transform target = null;
-
+   
+    public static TPSCamera instance;
     public float rotateSpeed = 15;
     private  float cameraX;
-    private float cameraY;
+    public float cameraY;
 
     private float lerpRate = 5.0f;
     //private float zoomRate = 20;
@@ -21,7 +22,10 @@ public class TPSCamera : MonoBehaviour {
     private float correctedDistance;
     public float cameraTargetHeight = 5.0f;
 
-
+    void Awake()
+    {
+        instance = this;
+    }
 	// Use this for initialization
 	void Start () {
         //GameObject dTarget = GameObject.Find("Player");

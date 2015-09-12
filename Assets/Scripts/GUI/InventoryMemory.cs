@@ -104,4 +104,9 @@ public class InventoryMemory : MonoBehaviour {
            
         }
     }
+
+    void UsingDelay()
+    {
+
+    }
 }

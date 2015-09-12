@@ -21,7 +21,7 @@ public class EnemyState : MonoBehaviour {
     private Animator _animator;
 
     private Transform target = null;
-    
+    NavMeshAgent nmAgent;
     
     public enum ENEMYSTATE
     {
@@ -40,6 +40,7 @@ public class EnemyState : MonoBehaviour {
 
     void Awake()
     {
+        nmAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
     }
     void Start()
@@ -51,7 +52,7 @@ public class EnemyState : MonoBehaviour {
         dicState[ENEMYSTATE.ATTACK] = Attack;
         dicState[ENEMYSTATE.DAMAGE] = Damage;
         dicState[ENEMYSTATE.DEAD] = Dead;
-
+        
        // FindPlayer();
     }
     // Update is called once per frame
@@ -102,12 +103,15 @@ public class EnemyState : MonoBehaviour {
         }
         else
         {
+            nmAgent.SetDestination(target.transform.position);
+            /*
             Vector3 dir = target.position - transform.position;
             dir.y = 0.0f;
             dir.Normalize();
 
             charController.SimpleMove(dir * speed);
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), rotationSpeed * Time.deltaTime);
+            */
         }
     }
    public void Attack()

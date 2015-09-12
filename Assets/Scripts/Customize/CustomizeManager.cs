@@ -40,10 +40,20 @@ public class CustomizeManager : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            Customizing.CustomLeg("legPart5");
-            StartCoroutine(SavePrefab());
+            playerObject = GameObject.Find("Player");
+          
+            Customizing.CustomLeg("legPart5", spawnPoint);
+          
+          // StartCoroutine(SavePrefab());
         }
-	}
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            playerObject = GameObject.Find("Player");
+            Customizing.CustomLeg("legPart0", spawnPoint);
+
+            // StartCoroutine(SavePrefab());
+        }
+    }
 
 
     public void CustomExit()
@@ -65,6 +75,7 @@ public class CustomizeManager : MonoBehaviour {
     {
 #if UNITY_EDITOR
         GameObject prefabPlayer = GameObject.Find("Player");
+        Debug.Log(prefabPlayer.name);
         emptyObj = PrefabUtility.CreateEmptyPrefab("Assets/Resources/CPlayer.prefab");
         PrefabUtility.ReplacePrefab(prefabPlayer, emptyObj, ReplacePrefabOptions.ConnectToPrefab);
         // GameObject playerModel = GameObject.Find("Player");

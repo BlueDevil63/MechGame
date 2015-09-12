@@ -32,10 +32,18 @@ public class GUIData : DataTools {
     public Text areaName;
     public Text lastFloor;
     public Text captureRate;
+    //Time
+    float timer;
+    int currentDate;
+    int currentMinute;
+    int currentHour;
+    public Text Hour;
+    public Text Minute;
+    public Text Date;
 
-   
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
         _playerData = new PlayerData();
         _fileLocation = "Assets/Data";
         _playerData = LoadPlayerData(_playerData);
@@ -46,14 +54,23 @@ public class GUIData : DataTools {
 
         _cityData = new CityData();
         _cityData = LoadCityData(_cityData);
-	
-	}
+
+
+
+        timer = 0;
+        currentDate = 0;
+        currentMinute = 0;
+        currentHour = 0;
+    }
 	
 	// Update is called once per frame
 	void Update () {
         selectArea = name;
-	
-	}
+        timer += Time.deltaTime;
+      //  Debug.Log(timer);
+        CalculateTime();
+        
+    }
     public void ClickArea()
     {
 
@@ -167,4 +184,32 @@ public class GUIData : DataTools {
         }
            return _cData;
    }
+
+    void CalculateTime()
+    {
+        if (timer >= 5)
+        {
+            currentMinute++;
+            timer = 0;
+        }
+        if (currentMinute == 60)
+        {
+            currentHour++;
+            currentMinute = 0;
+        }
+        if (currentHour == 24)
+        {
+            currentDate++;
+            currentHour = 0;
+        }
+
+        Date.text = currentDate + "일";
+        if(currentHour<10)
+            Hour.text = "0" + currentHour; 
+        else { Hour.text = currentHour + ""; }
+        if (currentMinute < 10)
+            Minute.text = ":0"+ currentMinute;
+        else { Minute.text = ":" + currentMinute; }
+    }
+
 }
