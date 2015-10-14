@@ -161,7 +161,7 @@ public class Player : MonoBehaviour {
                 pBoostStateTime = 0;
             }
         }
-        if (Input.GetButton("UseInventory"))
+        if (Input.GetButton("UseInventoryMemory"))
             UseInventory();
     }
 
@@ -214,7 +214,7 @@ public class Player : MonoBehaviour {
 
         //부스터 체크;
 
-        if (Input.GetButton("BustOn") && pBoost > 0)  //"BustOn = left shift  버튼이 눌려있다면 액션
+        if (Input.GetButton("Jump") && pBoost > 0)  //"BustOn = left shift  버튼이 눌려있다면 액션
         {
             pBoost = BusterRating(pBoost, pBoostRate, pBoostCoolingRate, true);
             if (pBoost <= 0)
@@ -252,8 +252,8 @@ public class Player : MonoBehaviour {
 
         //지면에서의 움직임, 
        
-   else if (pController.isGrounded)        //지면에 닿아있는지 체크
-      // else if(IsGrounded()&&isGround)
+   //else if (pController.isGrounded)        //지면에 닿아있는지 체크
+    else if(IsGrounded()&&isGround)
         {
             busterOn = false;
             x += Input.GetAxis("Horizontal");

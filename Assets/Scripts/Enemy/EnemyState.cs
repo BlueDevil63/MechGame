@@ -41,7 +41,7 @@ public class EnemyState : MonoBehaviour {
     void Awake()
     {
         nmAgent = GetComponent<NavMeshAgent>();
-        _animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
     }
     void Start()
     {

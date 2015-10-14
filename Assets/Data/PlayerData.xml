@@ -1,1 +1,77 @@
-﻿<?xml version="1.0" encoding="utf-8"?><PlayerData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><_user><head>Elpida Head</head><body>Elpida Body</body><arm>Elpida Arm</arm><leg>Elpida Leg</leg><backpack>Elpida BackPack</backpack><weapon1>ProtoGun</weapon1><weapon2>none</weapon2><name>BlueDevil63</name><money>20000</money><food>7</food><energy>10</energy><chapter>0</chapter><residence>Atena</residence><location>Atena</location></_user></PlayerData>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PlayerData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <_user>
+    <head>Elpida Head</head>
+    <body>Elpida Body</body>
+    <arm>Elpida Arm</arm>
+    <leg>Elpida Leg</leg>
+    <backpack>Elpida BackPack</backpack>
+    <weapon1>ProtoGun</weapon1>
+    <weapon2>none</weapon2>
+    <name>BlueDevil63</name>
+    <money>20000</money>
+    <food>7</food>
+    <energy>10</energy>
+    <chapter>0</chapter>
+    <residence>Atena</residence>
+    <location>Atena</location>
+    <_IMList>
+      <string>Box_0</string>
+      <string>Wall_0</string>
+      <string>Dummy_0</string>
+    </_IMList>
+    <_PrefabsList>
+      <string xsi:nil="true" />
+    </_PrefabsList>
+    <_HeadList>
+      <string>Elpida Head</string>
+    </_HeadList>
+    <_BodyList>
+      <string>Elpida Body</string>
+    </_BodyList>
+    <_ArmList>
+      <string>Elpida Arm</string>
+    </_ArmList>
+    <_LegList>
+      <string>Elpida Leg</string>
+    </_LegList>
+    <_BackPackList>
+      <string>Elpida BackPack</string>
+    </_BackPackList>
+    <_WeaponList>
+      <string>ProtoGun</string>
+    </_WeaponList>
+    <_IMDeck>
+      <string>box_0</string>
+      <string>box_0</string>
+      <string>box_0</string>
+      <string>box_0</string>
+      <string>box_0</string>
+      <string>box_0</string>
+      <string>box_0</string>
+      <string>box_0</string>
+      <string>box_0</string>
+      <string>box_0</string>
+      <string>box_0</string>
+      <string>box_0</string>
+      <string>box_0</string>
+      <string>wall_0</string>
+      <string>wall_0</string>
+      <string>wall_0</string>
+      <string>wall_0</string>
+      <string>wall_0</string>
+      <string>wall_0</string>
+      <string>wall_0</string>
+      <string>wall_0</string>
+      <string>wall_0</string>
+      <string>Dummy_0</string>
+      <string>Dummy_0</string>
+      <string>Dummy_0</string>
+      <string>Dummy_0</string>
+      <string>Dummy_0</string>
+      <string>Dummy_0</string>
+      <string>Dummy_0</string>
+      <string>Dummy_0</string>
+    </_IMDeck>
+  </_user>
+</PlayerData>

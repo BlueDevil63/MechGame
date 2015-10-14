@@ -1,0 +1,183 @@
+fileFormatVersion: 2
+guid: 9fc853d6157c55b44b7cda004baba1bb
+timeCreated: 1444139155
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: 027
+    100002: 029
+    100004: Body
+    100006: Body1
+    100008: Box005
+    100010: Box007
+    100012: Box011
+    100014: Box052
+    100016: Box062
+    100018: Box063
+    100020: Box064
+    100022: Box141
+    100024: Cylinder007
+    100026: Cylinder010
+    100028: Cylinder011
+    100030: Cylinder016
+    100032: Face
+    100034: Glass
+    100036: Head
+    100038: Hone
+    100040: Line001
+    100042: //RootNode
+    100044: shoulder
+    400000: 027
+    400002: 029
+    400004: Body
+    400006: Body1
+    400008: Box005
+    400010: Box007
+    400012: Box011
+    400014: Box052
+    400016: Box062
+    400018: Box063
+    400020: Box064
+    400022: Box141
+    400024: Cylinder007
+    400026: Cylinder010
+    400028: Cylinder011
+    400030: Cylinder016
+    400032: Face
+    400034: Glass
+    400036: Head
+    400038: Hone
+    400040: Line001
+    400042: //RootNode
+    400044: shoulder
+    2300000: 027
+    2300002: 029
+    2300004: Body
+    2300006: Body1
+    2300008: Box005
+    2300010: Box007
+    2300012: Box011
+    2300014: Box052
+    2300016: Box062
+    2300018: Box063
+    2300020: Box064
+    2300022: Box141
+    2300024: Cylinder007
+    2300026: Cylinder010
+    2300028: Cylinder011
+    2300030: Cylinder016
+    2300032: Face
+    2300034: Glass
+    2300036: Head
+    2300038: Hone
+    2300040: Line001
+    2300042: shoulder
+    3300000: 027
+    3300002: 029
+    3300004: Body
+    3300006: Body1
+    3300008: Box005
+    3300010: Box007
+    3300012: Box011
+    3300014: Box052
+    3300016: Box062
+    3300018: Box063
+    3300020: Box064
+    3300022: Box141
+    3300024: Cylinder007
+    3300026: Cylinder010
+    3300028: Cylinder011
+    3300030: Cylinder016
+    3300032: Face
+    3300034: Glass
+    3300036: Head
+    3300038: Hone
+    3300040: Line001
+    3300042: shoulder
+    4300000: Face
+    4300002: Body
+    4300004: Box005
+    4300006: Head
+    4300008: Box007
+    4300010: shoulder
+    4300012: Box011
+    4300014: Glass
+    4300016: Hone
+    4300018: Body1
+    4300020: Box052
+    4300022: Cylinder007
+    4300024: Cylinder010
+    4300026: Cylinder011
+    4300028: Cylinder016
+    4300030: Box062
+    4300032: Box063
+    4300034: Box064
+    4300036: Box141
+    4300038: Line001
+    4300040: 027
+    4300042: 029
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .5
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

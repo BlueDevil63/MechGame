@@ -294,11 +294,11 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: HookFire
+    m_Name: HookShot
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: f
+    positiveButton: left shift
     altNegativeButton: 
     altPositiveButton: joystick button 4
     gravity: 1000
@@ -330,7 +330,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: left shift
+    positiveButton: v
     altNegativeButton: 
     altPositiveButton: joystick button 1
     gravity: 1000
@@ -342,7 +342,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: UseInventory
+    m_Name: UseInventoryMemory
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -358,11 +358,11 @@ InputManager:
     axis: 0
     joyNum: 3
   - serializedVersion: 3
-    m_Name: SelectInventory
+    m_Name: SelectInventoryMemory
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: q
-    positiveButton: 
+    positiveButton: e
     altNegativeButton: 
     altPositiveButton: joystick button 1
     gravity: 1000

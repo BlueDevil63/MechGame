@@ -8,8 +8,9 @@ PlayerSettings:
   defaultScreenOrientation: 4
   targetDevice: 2
   targetResolution: 0
+  useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: LSGCompany
   productName: MechGame
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -28,6 +29,7 @@ PlayerSettings:
   androidShowActivityIndicatorOnLoading: -1
   iosAppInBackgroundBehavior: 0
   displayResolutionDialog: 1
+  iosAllowHTTPDownload: 1
   allowedAutorotateToPortrait: 1
   allowedAutorotateToPortraitUpsideDown: 1
   allowedAutorotateToLandscapeRight: 1
@@ -135,6 +137,15 @@ PlayerSettings:
   iOSLaunchScreenFillPct: 1
   iOSLaunchScreenSize: 100
   iOSLaunchScreenCustomXibPath: 
+  iOSLaunchScreeniPadType: 0
+  iOSLaunchScreeniPadImage: {fileID: 0}
+  iOSLaunchScreeniPadBackgroundColor:
+    serializedVersion: 2
+    rgba: 0
+  iOSLaunchScreeniPadFillPct: 100
+  iOSLaunchScreeniPadSize: 100
+  iOSLaunchScreeniPadCustomXibPath: 
+  iOSDeviceRequirements: []
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
@@ -231,6 +242,8 @@ PlayerSettings:
   ps4SdkOverride: 
   ps4BGMPath: 
   ps4ShareFilePath: 
+  ps4ShareOverlayImagePath: 
+  ps4PrivacyGuardImagePath: 
   ps4NPtitleDatPath: 
   ps4RemotePlayKeyAssignment: -1
   ps4RemotePlayKeyMappingDir: 
@@ -248,10 +261,13 @@ PlayerSettings:
   ps4pnGameCustomData: 1
   playerPrefsSupport: 0
   ps4ReprojectionSupport: 0
+  ps4UseAudio3dBackend: 0
+  ps4Audio3dVirtualSpeakerCount: 14
   ps4attribUserManagement: 0
   ps4attribMoveSupport: 0
   ps4attrib3DSupport: 0
   ps4attribShareSupport: 0
+  ps4IncludedModules: []
   monoEnv: 
   psp2Splashimage: {fileID: 0}
   psp2NPTrophyPackPath: 
@@ -302,7 +318,15 @@ PlayerSettings:
   psmSplashimage: {fileID: 0}
   spritePackerPolicy: 
   scriptingDefineSymbols:
-    4: 
+    1: CROSS_PLATFORM_INPUT
+    2: CROSS_PLATFORM_INPUT
+    4: CROSS_PLATFORM_INPUT
+    7: CROSS_PLATFORM_INPUT
+    14: 
+    15: CROSS_PLATFORM_INPUT
+    16: CROSS_PLATFORM_INPUT
+    17: 
+    20: 
   metroPackageName: MechGame
   metroPackageLogo: 
   metroPackageLogo140: 

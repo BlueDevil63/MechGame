@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MapObjcet : MonoBehaviour {
-    public GameManager.ObjectCategory objCategory = GameManager.ObjectCategory.NOMAL;
+    public BattleMgr.ObjectCategory objCategory = BattleMgr.ObjectCategory.NOMAL;
     public float Weight = 10;
 
 	// Use this for initialization

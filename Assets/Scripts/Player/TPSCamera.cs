@@ -95,7 +95,7 @@ public class TPSCamera : MonoBehaviour {
 
         
     }
-
+    
 
     private static float ClampAngle( float value, float min, float max)
     {
